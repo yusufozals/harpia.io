@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Yönetimi - Harpia Admin</title>
+    <meta name="description" conten="Harpia - Watches &amp; Jewelry">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../assets/img/favicon.png" sizes="32x32" />
+    <link rel="icon" href="../assets/img/favicon.png" sizes="192x192" />
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; }
+        
+        /* Sidebar (Aynı kaldı) */
+        .sidebar { height: 100vh; width: 250px; position: fixed; top: 0; left: 0; background-color: #343a40; padding-top: 20px; color: white; }
+        .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 16px; color: #cfd8dc; display: block; border-left: 4px solid transparent; }
+        .sidebar a:hover, .sidebar a.active { background-color: #495057; color: #fff; border-left-color: #0d6efd; }
+        .sidebar .brand { font-size: 24px; text-align: center; font-weight: bold; margin-bottom: 30px; letter-spacing: 2px; }
+        
+        .content { margin-left: 250px; padding: 20px; }
+        
+        .card { border: none; box-shadow: 0 0 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .card-header { background-color: #fff; border-bottom: 1px solid #eee; font-weight: bold; padding: 15px 20px; }
+        
+        /* Tablo içi görsel */
+        .product-img-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand"><i class="fa-regular fa-clock"></i> HARPİA</div>
+        <a href="index.html"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
+        <a href="products.html" class="active"><i class="fa-solid fa-box-open me-2"></i> Ürün Yönetimi</a>
+        <a href="order.html"><i class="fa-solid fa-cart-shopping me-2"></i> Siparişler <span class="badge bg-danger float-end">3</span></a>
+        <a href="accounts.html"><i class="fa-solid fa-users me-2"></i> Müşteriler</a>
+        <a href="kampanya.html"><i class="fa-solid fa-tags me-2"></i> Kampanyalar</a>
+        <a href="settings.html"><i class="fa-solid fa-gear me-2"></i> Ayarlar</a>
+        <a href="logout.html" class="mt-5 text-danger"><i class="fa-solid fa-right-from-bracket me-2"></i> Çıkış Yap</a>
+    </div>
+
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="fw-bold">Ürün Yönetimi</h3>
+        </div>
+
+        <ul class="nav nav-tabs mb-4" id="productTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-bold" id="list-tab" data-bs-toggle="tab" data-bs-target="#list-view" type="button">
+                    <i class="fa-solid fa-list me-2"></i>Ürün Listesi
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold" id="add-tab" data-bs-toggle="tab" data-bs-target="#add-view" type="button">
+                    <i class="fa-solid fa-plus me-2"></i>Yeni Ürün Ekle
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="productTabsContent">
+            
+            <div class="tab-pane fade show active" id="list-view" role="tabpanel">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Kayıtlı Saatler (Envanter)</span>
+            <div class="input-group w-25">
+                <input type="text" class="form-control form-control-sm" placeholder="Model, SKU veya Marka ara...">
+                <button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Görsel</th>
+                            <th>Model Adı & Detay</th>
+                            <th>SKU</th>
+                            <th>Fiyat</th>
+                            <th>Stok Durumu</th>
+                            <th>Yayın</th>
+                            <th class="text-end pe-4">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ps-4">
+                                <img src="https://img.chrono24.com/images/uhren/42064068-i5ic9l3hmq7i3dk8zexaeuyd-ExtraLarge.jpg" class="product-img-thumb shadow-sm" alt="Patek">
+                            </td>
+                            <td>
+                                <div class="fw-bold text-dark">Patek Philippe Nautilus</div>
+                                <small class="text-muted">5711/1A - Çelik, Mavi Kadran</small>
+                            </td>
+                            <td class="font-monospace small">PP-5711</td>
+                            <td class="fw-bold text-dark">₺3,250,000</td>
+                            <td><span class="badge bg-danger">1 Adet (Kritik)</span></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-sm btn-light border me-1"><i class="fa-solid fa-pen text-primary"></i></button>
+                                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4">
+                                <img src="https://img.chrono24.com/images/uhren/34548928-wma2yyz4aiq183yzxyc5fu70-ExtraLarge.jpg" class="product-img-thumb shadow-sm" alt="AP">
+                            </td>
+                            <td>
+                                <div class="fw-bold text-dark">Audemars Piguet Royal Oak</div>
+                                <small class="text-muted">Jumbo Extra-Thin, 18K Rose Gold</small>
+                            </td>
+                            <td class="font-monospace small">AP-15202</td>
+                            <td class="fw-bold text-dark">₺2,850,000</td>
+                            <td><span class="badge bg-warning text-dark">2 Adet</span></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-sm btn-light border me-1"><i class="fa-solid fa-pen text-primary"></i></button>
+                                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4">
+                                <img src="https://img.chrono24.com/images/uhren/32585129-b02ufm80eqd2mvz1mqzbqvcl-ExtraLarge.jpg" class="product-img-thumb shadow-sm" alt="Rolex">
+                            </td>
+                            <td>
+                                <div class="fw-bold text-dark">Rolex Submariner Date</div>
+                                <small class="text-muted">Oystersteel, Siyah Seramik Bezel</small>
+                            </td>
+                            <td class="font-monospace small">RLX-126610</td>
+                            <td class="fw-bold text-dark">₺485,000</td>
+                            <td><span class="badge bg-success">8 Adet</span></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-sm btn-light border me-1"><i class="fa-solid fa-pen text-primary"></i></button>
+                                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4">
+                                <img src="https://img.chrono24.com/images/uhren/33846061-1izsalb1geipt7i97ovx9o6b-ExtraLarge.jpg" class="product-img-thumb shadow-sm" alt="Richard Mille">
+                            </td>
+                            <td>
+                                <div class="fw-bold text-dark">Richard Mille RM 11-03</div>
+                                <small class="text-muted">McLaren Automatic Flyback</small>
+                            </td>
+                            <td class="font-monospace small">RM-11-03</td>
+                            <td class="fw-bold text-dark">₺12,500,000</td>
+                            <td><span class="badge bg-secondary">Tükendi</span></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-sm btn-light border me-1"><i class="fa-solid fa-pen text-primary"></i></button>
+                                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuL1pbMXV3UqoKk8qmxl_fYIMgBmmHo9PpHQ&s" class="product-img-thumb shadow-sm" alt="Omega">
+                            </td>
+                            <td>
+                                <div class="fw-bold text-dark">Omega Speedmaster Moonwatch Silver Snoopy</div>
+                                <small class="text-muted">Profesyonel, Safir Kristal</small>
+                            </td>
+                            <td class="font-monospace small">OMG-310.30</td>
+                            <td class="fw-bold text-dark">₺245,000</td>
+                            <td><span class="badge bg-success">12 Adet</span></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-sm btn-light border me-1"><i class="fa-solid fa-pen text-primary"></i></button>
+                                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ps-4">
+                                <img src="https://img.chrono24.com/images/uhren/43836376-i52r1gr91pahb79gd50hrwbf-ExtraLarge.jpg" class="product-img-thumb shadow-sm" alt="Vacheron">
+                            </td>
+                            <td>
+                                <div class="fw-bold text-dark">Vacheron Constantin Overseas</div>
+                                <small class="text-muted">4500V, Mavi Kadran</small>
+                            </td>
+                            <td class="font-monospace small">VC-4500V</td>
+                            <td class="fw-bold text-dark">₺1,150,000</td>
+                            <td><span class="badge bg-warning text-dark">3 Adet</span></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-sm btn-light border me-1"><i class="fa-solid fa-pen text-primary"></i></button>
+                                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </td>
+                        </tr>
+
+                         <tr>
+                            <td class="ps-4">
+                                <img src="https://www.rotapsaat.com/images/thumbs/0014644_cartier-santos-de-cartier-medium-wssa0029.jpeg" class="product-img-thumb shadow-sm" alt="Cartier">
+                            </td>
+                            <td>
+                                <div class="fw-bold text-dark">Cartier Santos de Cartier</div>
+                                <small class="text-muted">Large Model, Çelik/Altın</small>
+                            </td>
+                            <td class="font-monospace small">CA-W2SA</td>
+                            <td class="fw-bold text-dark">₺380,000</td>
+                            <td><span class="badge bg-success">5 Adet</span></td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </div>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-sm btn-light border me-1"><i class="fa-solid fa-pen text-primary"></i></button>
+                                <button class="btn btn-sm btn-light border"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer bg-white text-end py-3">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-end mb-0">
+                        <li class="page-item disabled"><a class="page-link" href="#">Önceki</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Sonraki</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="tab-pane fade" id="add-view" role="tabpanel">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header">Temel Ürün Bilgileri</div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Ürün Adı (Model)</label>
+                                        <input type="text" class="form-control" placeholder="Örn: Seiko 5 Sports Automatic">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Ürün Açıklaması</label>
+                                        <textarea class="form-control" rows="4" placeholder="Ürün hikayesi ve detayları..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="card">
+                                <div class="card-header">Teknik Özellikler (Spesifikasyonlar)</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Mekanizma</label>
+                                            <select class="form-select">
+                                                <option>Seçiniz...</option>
+                                                <option>Otomatik</option>
+                                                <option>Quartz (Pilli)</option>
+                                                <option>Mekanik (Kurmalı)</option>
+                                                <option>Solar</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Kasa Çapı (mm)</label>
+                                            <input type="number" class="form-control" placeholder="Örn: 42">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Cam Tipi</label>
+                                            <select class="form-select">
+                                                <option>Safir Kristal</option>
+                                                <option>Mineral</option>
+                                                <option>Mika</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Kasa Materyali</label>
+                                            <input type="text" class="form-control" placeholder="Örn: 316L Çelik">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Su Geçirmezlik</label>
+                                            <select class="form-select">
+                                                <option>3 ATM (El Yıkama)</option>
+                                                <option>5 ATM (Duş)</option>
+                                                <option>10 ATM (Yüzme)</option>
+                                                <option>20 ATM+ (Dalış)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Kordon Tipi</label>
+                                            <input type="text" class="form-control" placeholder="Örn: Deri / Çelik">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">Fiyat ve Stok</div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Satış Fiyatı (TL)</label>
+                                        <input type="number" class="form-control" step="0.01">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">İndirimli Fiyat (Opsiyonel)</label>
+                                        <input type="number" class="form-control" step="0.01">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label">Stok Adedi</label>
+                                            <input type="number" class="form-control" value="1">
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label">SKU (Kod)</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="statusSwitch" checked>
+                                        <label class="form-check-label" for="statusSwitch">Ürün Yayında</label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="card">
+                                <div class="card-header">Ürün Görselleri</div>
+                                <div class="card-body text-center">
+                                    <div class="border p-4 rounded bg-light mb-3" style="border-style: dashed !important;">
+                                        <i class="fa-solid fa-cloud-arrow-up fa-2x text-muted"></i>
+                                        <p class="small text-muted mt-2">Görselleri sürükleyin veya seçin</p>
+                                        <input type="file" class="form-control form-control-sm" multiple>
+                                    </div>
+                                    <small class="text-muted d-block text-start">* İlk görsel kapak fotoğrafı olacaktır.</small>
+                                </div>
+                            </div>
+        
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg"><i class="fa-solid fa-save me-2"></i>Kaydet</button>
+                                <button type="button" class="btn btn-outline-secondary">İptal</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div> </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

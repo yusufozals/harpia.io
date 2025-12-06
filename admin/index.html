@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harpia - Watches &amp; Jewelry | Home</title>
+    <meta name="description" conten="Harpia - Watches &amp; Jewelry">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../assets/img/favicon.png" sizes="32x32" />
+    <link rel="icon" href="../assets/img/favicon.png" sizes="192x192" />
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; }
+        
+        /* Sidebar (Önceki kodla aynı) */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            color: white;
+            z-index: 1000;
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #cfd8dc;
+            display: block;
+            border-left: 4px solid transparent;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #495057;
+            color: #fff;
+            border-left-color: #0d6efd;
+        }
+        .sidebar .brand {
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        /* İçerik Alanı */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        /* Dashboard Kartları */
+        .stat-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        /* Tablo Stili */
+        .table-responsive {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 70px; }
+            .sidebar .brand, .sidebar span { display: none; }
+            .sidebar a { padding: 15px; text-align: center; }
+            .content { margin-left: 70px; }
+        }
+    </style>
+
+    <script>
+        // Sayfa yüklenmeden önce hemen kontrol et
+        (function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                // Kullanıcı giriş yapmamışsa hemen yönlendir
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand"><i class="fa-regular fa-clock"></i> HARPİA</div>
+        <a href="index.html" class="active" ><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
+        <a href="products.html" ><i class="fa-solid fa-box-open me-2"></i> Ürün Yönetimi</a>
+        <a href="order.html"><i class="fa-solid fa-cart-shopping me-2"></i> Siparişler <span class="badge bg-danger float-end">3</span></a>
+        <a href="accounts.html"><i class="fa-solid fa-users me-2"></i> Müşteriler</a>
+        <a href="kampanya.html"><i class="fa-solid fa-tags me-2"></i> Kampanyalar</a>
+        <a href="settings.html"><i class="fa-solid fa-gear me-2"></i> Ayarlar</a>
+        <a href="logout.html" class="mt-5 text-danger"><i class="fa-solid fa-right-from-bracket me-2"></i> Çıkış Yap</a>
+    </div>
+
+    <div class="content">
+        <h3 class="mb-4">Genel Bakış</h3>
+        
+        
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="icon-box bg-primary me-3">
+                            <i class="fa-solid fa-turkish-lira-sign"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Toplam Ciro (Aylık)</h6>
+                            <h4 class="fw-bold mb-0">₺142,500</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="icon-box bg-success me-3">
+                            <i class="fa-solid fa-cart-arrow-down"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Yeni Siparişler</h6>
+                            <h4 class="fw-bold mb-0">24</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="icon-box bg-warning me-3">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Toplam Ürün</h6>
+                            <h4 class="fw-bold mb-0">1,204</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="icon-box bg-info me-3">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Yeni Üye</h6>
+                            <h4 class="fw-bold mb-0">12</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm p-3">
+                    <h5 class="card-title text-muted fs-6">Son 7 Günlük Satış Grafiği</h5>
+                    <canvas id="salesChart" height="120"></canvas>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <h5 class="card-title text-muted fs-6">Kategori Dağılımı</h5>
+                    <canvas id="categoryChart" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-8">
+                <div class="table-responsive">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Son Gelen Siparişler</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Tümünü Gör</a>
+                    </div>
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Sipariş No</th>
+                                <th>Müşteri</th>
+                                <th>Ürün</th>
+                                <th>Tutar</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#SIP-4821</td>
+                                <td>Ahmet Yılmaz</td>
+                                <td>Seiko Presage Auto...</td>
+                                <td>₺14,500</td>
+                                <td><span class="badge bg-warning text-dark">Hazırlanıyor</span></td>
+                            </tr>
+                            <tr>
+                                <td>#SIP-4820</td>
+                                <td>Ayşe Demir</td>
+                                <td>Casio Vintage Gold</td>
+                                <td>₺2,200</td>
+                                <td><span class="badge bg-success">Tamamlandı</span></td>
+                            </tr>
+                            <tr>
+                                <td>#SIP-4819</td>
+                                <td>Mehmet Öztürk</td>
+                                <td>Tissot PRX Powermatic</td>
+                                <td>₺24,000</td>
+                                <td><span class="badge bg-info">Kargoda</span></td>
+                            </tr>
+                            <tr>
+                                <td>#SIP-4818</td>
+                                <td>Zeynep Kaya</td>
+                                <td>Fossil Gen 6 Smart</td>
+                                <td>₺8,400</td>
+                                <td><span class="badge bg-danger">İptal Edildi</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="mb-0 text-danger"><i class="fa-solid fa-triangle-exclamation me-2"></i>Kritik Stok</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 small">Rolex Submariner (Replica)</h6>
+                                <small class="text-muted">SKU: RLX-001</small>
+                            </div>
+                            <span class="badge bg-danger rounded-pill">1 Adet</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 small">Casio G-Shock Red</h6>
+                                <small class="text-muted">SKU: CS-204</small>
+                            </div>
+                            <span class="badge bg-danger rounded-pill">2 Adet</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 small">Seiko 5 Sports Green</h6>
+                                <small class="text-muted">SKU: SK-550</small>
+                            </div>
+                            <span class="badge bg-warning text-dark rounded-pill">4 Adet</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // 1. Satış Grafiği (Çizgi Grafik)
+        const ctx1 = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
+                datasets: [{
+                    label: 'Günlük Ciro (₺)',
+                    data: [12000, 19000, 15000, 22000, 18000, 32000, 24500],
+                    borderColor: '#0d6efd',
+                    backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // 2. Kategori Grafiği (Halka Grafik)
+        const ctx2 = document.getElementById('categoryChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Otomatik', 'Quartz', 'Akıllı Saat', 'Aksesuar'],
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: ['#198754', '#ffc107', '#0dcaf0', '#6c757d'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+  
+    </script>
+    
+    
+</body>
+</html>

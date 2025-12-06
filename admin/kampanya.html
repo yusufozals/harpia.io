@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harpia - Watches &amp; Jewelry | Home</title>
+    <meta name="description" conten="Harpia - Watches &amp; Jewelry">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../assets/img/favicon.png" sizes="32x32" />
+    <link rel="icon" href="../assets/img/favicon.png" sizes="192x192" />
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; }
+        
+        /* Sidebar (Önceki kodla aynı) */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            color: white;
+            z-index: 1000;
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #cfd8dc;
+            display: block;
+            border-left: 4px solid transparent;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #495057;
+            color: #fff;
+            border-left-color: #0d6efd;
+        }
+        .sidebar .brand {
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        /* İçerik Alanı */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        /* Dashboard Kartları */
+        .stat-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        /* Tablo Stili */
+        .table-responsive {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 70px; }
+            .sidebar .brand, .sidebar span { display: none; }
+            .sidebar a { padding: 15px; text-align: center; }
+            .content { margin-left: 70px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand"><i class="fa-regular fa-clock"></i> HARPİA</div>
+        <a href="index.html"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
+        <a href="products.html" ><i class="fa-solid fa-box-open me-2"></i> Ürün Yönetimi</a>
+        <a href="order.html"><i class="fa-solid fa-cart-shopping me-2"></i> Siparişler <span class="badge bg-danger float-end">3</span></a>
+        <a href="accounts.html"><i class="fa-solid fa-users me-2"></i> Müşteriler</a>
+        <a href="kampanya.html" class="active"><i class="fa-solid fa-tags me-2"></i> Kampanyalar</a>
+        <a href="settings.html"><i class="fa-solid fa-gear me-2"></i> Ayarlar</a>
+        <a href="logout.html" class="mt-5 text-danger"><i class="fa-solid fa-right-from-bracket me-2"></i> Çıkış Yap</a>
+    </div>
+
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="fw-bold mb-0">Kampanya Yönetimi</h3>
+                <p class="text-muted small">Aktif kuponlar ve vitrin görselleri</p>
+            </div>
+            <button class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Yeni Kampanya Sihirbazı</button>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-white bg-primary bg-gradient">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 text-white-50">Aktif Kuponlar</h6>
+                                <h3 class="fw-bold mb-0">5 Adet</h3>
+                            </div>
+                            <i class="fa-solid fa-ticket fa-2x text-white-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-white bg-success bg-gradient">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 text-white-50">Bu Ay Kullanım</h6>
+                                <h3 class="fw-bold mb-0">142 Kez</h3>
+                            </div>
+                            <i class="fa-solid fa-chart-line fa-2x text-white-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-white bg-dark bg-gradient">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 text-white-50">İndirim Tutarı</h6>
+                                <h3 class="fw-bold mb-0">₺12,450</h3>
+                            </div>
+                            <i class="fa-solid fa-wallet fa-2x text-white-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+                        <h5 class="fw-bold"><i class="fa-solid fa-wand-magic-sparkles me-2 text-warning"></i>Hızlı Kupon Oluştur</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">KUPON KODU</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control fw-bold" placeholder="ÖRN: YAZ2024" style="text-transform: uppercase; letter-spacing: 1px;">
+                                    <button class="btn btn-outline-secondary" type="button" title="Rastgele Oluştur"><i class="fa-solid fa-shuffle"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="row g-2 mb-3">
+                                <div class="col-6">
+                                    <label class="form-label small fw-bold text-muted">TÜR</label>
+                                    <select class="form-select">
+                                        <option value="yuzde">% Yüzde</option>
+                                        <option value="tutar">₺ Tutar</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label small fw-bold text-muted">DEĞER</label>
+                                    <input type="number" class="form-control" placeholder="10">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">ALT LİMİT (₺)</label>
+                                <input type="number" class="form-control" placeholder="Örn: 1000 TL üzeri geçerli">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">GEÇERLİLİK TARİHİ</label>
+                                <input type="date" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">KISITLAMA (OPSİYONEL)</label>
+                                <select class="form-select">
+                                    <option selected>Tüm Ürünlerde Geçerli</option>
+                                    <option>Sadece Seiko Markasında</option>
+                                    <option>Sadece Casio Markasında</option>
+                                    <option>Sadece Aksesuarlarda</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-primary w-100 py-2">Kuponu Oluştur</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="fw-bold mb-0">Aktif Kampanyalar</h5>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-4">Kupon Kodu</th>
+                                    <th>İndirim</th>
+                                    <th>Koşul</th>
+                                    <th>Kullanım</th>
+                                    <th>Bitiş</th>
+                                    <th>Durum</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-light border rounded p-2 fw-bold text-dark me-2" style="letter-spacing: 1px;">HOSGELDIN</div>
+                                            <button class="btn btn-sm text-muted p-0"><i class="fa-regular fa-copy"></i></button>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-primary">%10 İndirim</span></td>
+                                    <td class="small text-muted">Alt limit yok</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2 fw-bold">142</span>
+                                            <div class="progress" style="width: 50px; height: 4px;">
+                                                <div class="progress-bar" style="width: 70%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="small text-muted">Süresiz</td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" checked>
+                                        </div>
+                                    </td>
+                                    <td><button class="btn btn-sm btn-light text-danger"><i class="fa-solid fa-trash"></i></button></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-light border rounded p-2 fw-bold text-dark me-2" style="letter-spacing: 1px;">SEIKO500</div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-success">500₺ İndirim</span></td>
+                                    <td class="small text-muted">5000₺ üzeri</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2 fw-bold">12</span>
+                                            <div class="progress" style="width: 50px; height: 4px;">
+                                                <div class="progress-bar bg-warning" style="width: 20%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="small">30 Ara 2023</td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" checked>
+                                        </div>
+                                    </td>
+                                    <td><button class="btn btn-sm btn-light text-danger"><i class="fa-solid fa-trash"></i></button></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-light border rounded p-2 fw-bold text-muted me-2 text-decoration-line-through">BLACKFRIDAY</div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-secondary">%25 İndirim</span></td>
+                                    <td class="small text-muted">Tüm ürünler</td>
+                                    <td>
+                                        <span class="fw-bold text-muted">850</span>
+                                    </td>
+                                    <td class="small text-danger">Süresi Doldu</td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" disabled>
+                                        </div>
+                                    </td>
+                                    <td><button class="btn btn-sm btn-light text-danger"><i class="fa-solid fa-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0">Vitrin Görselleri (Slider)</h5>
+                        <button class="btn btn-sm btn-outline-primary">Görsel Yükle</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="position-relative border rounded overflow-hidden">
+                                    <img src="https://via.placeholder.com/600x200/333/fff?text=Yaz+Koleksiyonu" class="img-fluid w-100" alt="Banner">
+                                    <div class="position-absolute top-0 end-0 p-2">
+                                        <button class="btn btn-sm btn-danger shadow"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                    <div class="p-2 bg-light d-flex justify-content-between align-items-center">
+                                        <small class="fw-bold">Yaz Koleksiyonu</small>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative border rounded overflow-hidden">
+                                    <img src="https://via.placeholder.com/600x200/b8860b/fff?text=Premium+Saatler" class="img-fluid w-100" alt="Banner">
+                                    <div class="position-absolute top-0 end-0 p-2">
+                                        <button class="btn btn-sm btn-danger shadow"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                    <div class="p-2 bg-light d-flex justify-content-between align-items-center">
+                                        <small class="fw-bold">Premium Lansman</small>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>

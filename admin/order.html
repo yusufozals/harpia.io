@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harpia - Watches &amp; Jewelry | Home</title>
+    <meta name="description" conten="Harpia - Watches &amp; Jewelry">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../assets/img/favicon.png" sizes="32x32" />
+    <link rel="icon" href="../assets/img/favicon.png" sizes="192x192" />
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; }
+        
+        /* Sidebar (Önceki kodla aynı) */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            color: white;
+            z-index: 1000;
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #cfd8dc;
+            display: block;
+            border-left: 4px solid transparent;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #495057;
+            color: #fff;
+            border-left-color: #0d6efd;
+        }
+        .sidebar .brand {
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        /* İçerik Alanı */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        /* Dashboard Kartları */
+        .stat-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        /* Tablo Stili */
+        .table-responsive {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 70px; }
+            .sidebar .brand, .sidebar span { display: none; }
+            .sidebar a { padding: 15px; text-align: center; }
+            .content { margin-left: 70px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand"><i class="fa-regular fa-clock"></i> HARPİA</div>
+        <a href="index.html" ><i class="fa-solid fa-gauge me-2"></i> Dashboard</a>
+        <a href="products.html" ><i class="fa-solid fa-box-open me-2"></i> Ürün Yönetimi</a>
+        <a href="order.html" class="active" ><i class="fa-solid fa-cart-shopping me-2"></i> Siparişler <span class="badge bg-danger float-end">3</span></a>
+        <a href="accounts.html"><i class="fa-solid fa-users me-2"></i> Müşteriler</a>
+        <a href="kampanya.html"><i class="fa-solid fa-tags me-2"></i> Kampanyalar</a>
+        <a href="settings.html"><i class="fa-solid fa-gear me-2"></i> Ayarlar</a>
+        <a href="logout.html" class="mt-5 text-danger"><i class="fa-solid fa-right-from-bracket me-2"></i> Çıkış Yap</a>
+    </div>
+
+
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>Sipariş Yönetimi</h3>
+            <button class="btn btn-success"><i class="fa-solid fa-file-excel me-2"></i>Excel'e Aktar</button>
+        </div>
+
+        <div class="card mb-4 border-0 shadow-sm">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Sipariş No veya Müşteri Ara...">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">Tüm Durumlar</option>
+                            <option value="bekliyor">Ödeme Bekleniyor</option>
+                            <option value="hazirlaniyor">Hazırlanıyor</option>
+                            <option value="kargoda">Kargoda</option>
+                            <option value="tamamlandi">Tamamlandı</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-md-3 d-grid">
+                        <button class="btn btn-primary">Filtrele</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+           <table class="table table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th># Sipariş No</th>
+            <th>Müşteri</th>
+            <th>Tarih</th>
+            <th>Toplam Tutar</th>
+            <th>Ödeme Yöntemi</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="fw-bold">SIP-2023012</td>
+            <td>
+                <div class="fw-bold">Canan Dağdelen</div>
+                <small class="text-muted">canan@mail.com</small>
+            </td>
+            <td>Bugün, 14:30</td>
+            <td>₺156,000</td>
+            <td>Havale / EFT</td>
+            <td><span class="badge bg-secondary">Ödeme Bekliyor</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary" title="Detay"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-sm btn-outline-secondary" title="Yazdır"><i class="fa-solid fa-print"></i></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="fw-bold">SIP-2023011</td>
+            <td>
+                <div class="fw-bold">Ali Veli</div>
+                <small class="text-muted">ali@mail.com</small>
+            </td>
+            <td>12 Ekim 2023</td>
+            <td>₺12,500</td>
+            <td>Kredi Kartı</td>
+            <td><span class="badge bg-warning text-dark">Hazırlanıyor</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-print"></i></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="fw-bold">SIP-2023010</td>
+            <td>
+                <div class="fw-bold">Zeynep Yılmaz</div>
+                <small class="text-muted">zeynep.y@mail.com</small>
+            </td>
+            <td>11 Ekim 2023</td>
+            <td>₺4,200</td>
+            <td>Kredi Kartı</td>
+            <td><span class="badge bg-info text-dark">Kargoda</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-print"></i></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="fw-bold">SIP-2023009</td>
+            <td>
+                <div class="fw-bold">Mehmet Öz</div>
+                <small class="text-muted">mehmet@oz.com</small>
+            </td>
+            <td>10 Ekim 2023</td>
+            <td>₺28,000</td>
+            <td>Kredi Kartı</td>
+            <td><span class="badge bg-danger">İptal Edildi</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="fw-bold">SIP-2023008</td>
+            <td>
+                <div class="fw-bold">Hakan Çelik</div>
+                <small class="text-muted">hakan@holding.com</small>
+            </td>
+            <td>09 Ekim 2023</td>
+            <td>₺485,000</td>
+            <td>Havale / EFT</td>
+            <td><span class="badge bg-success">Teslim Edildi</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-sm btn-outline-success"><i class="fa-solid fa-file-invoice"></i></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="fw-bold">SIP-2023007</td>
+            <td>
+                <div class="fw-bold">Ayşe Demir</div>
+                <small class="text-muted">ayse@mail.com</small>
+            </td>
+            <td>08 Ekim 2023</td>
+            <td>₺3,500</td>
+            <td>Kapıda Ödeme</td>
+            <td><span class="badge bg-success">Teslim Edildi</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-sm btn-outline-success"><i class="fa-solid fa-file-invoice"></i></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="fw-bold">SIP-2023006</td>
+            <td>
+                <div class="fw-bold">Burak Yılmaz</div>
+                <small class="text-muted">burak@spor.com</small>
+            </td>
+            <td>05 Ekim 2023</td>
+            <td>₺8,900</td>
+            <td>Kredi Kartı</td>
+            <td><span class="badge bg-dark">İade Talebi</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-sm btn-outline-danger" title="İadeyi Onayla"><i class="fa-solid fa-rotate-left"></i></button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="fw-bold">SIP-2023005</td>
+            <td>
+                <div class="fw-bold">Selin Kara</div>
+                <small class="text-muted">selin@kara.com</small>
+            </td>
+            <td>04 Ekim 2023</td>
+            <td>₺22,450</td>
+            <td>Kredi Kartı</td>
+            <td><span class="badge bg-info text-dark">Kargoda</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-print"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+            
+            <nav class="mt-4">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled"><a class="page-link" href="#">Önceki</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Sonraki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</body>
+</html>

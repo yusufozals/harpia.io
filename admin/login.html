@@ -1,0 +1,242 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Harpia - Watches &amp; Jewelry | Home</title>
+        <meta name="description" conten="Harpia - Watches &amp; Jewelry">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="icon" href="../assets/img/favicon.png" sizes="32x32" />
+        <link rel="icon" href="../assets/img/favicon.png" sizes="192x192" />
+        <style>
+            body {
+                background-color: #e9ecef;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .login-card {
+                overflow: hidden;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 0 40px rgba(0,0,0,0.1);
+            }
+            .login-image {
+                /* Saat görseli */
+                background-image: url('https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=1000&auto=format&fit=crop'); 
+                background-size: cover;
+                background-position: center;
+                position: relative;
+            }
+            .login-image::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            }
+            .login-image-content {
+                position: relative;
+                z-index: 1;
+                color: white;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 40px;
+            }
+            .form-control:focus {
+                box-shadow: none;
+                border-color: #212529;
+            }
+            .btn-dark {
+                background-color: #212529;
+                padding: 12px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                transition: all 0.3s;
+            }
+            .btn-dark:hover {
+                background-color: #000;
+                transform: translateY(-2px);
+            }
+            /* Hata mesajı stili */
+            #alertMessage {
+                display: none; /* Başlangıçta gizli */
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card login-card">
+                        <div class="row g-0">
+                            <div class="col-lg-6 d-none d-lg-block login-image">
+                                <div class="login-image-content">
+                                    <div>
+                                        <h3 class="fw-bold"><i class="fa-regular fa-clock me-2"></i>HARPIA</h3>
+                                        <p class="small opacity-75">Premium Watch Store</p>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0 fs-5">"Zamanın ötesinde bir yönetim deneyimi."</p>
+                                        <small class="opacity-75">- Admin Paneli v2.0</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 bg-white p-5">
+                                <div class="mb-4 mt-2">
+                                    <h2 class="fw-bold text-dark">Hoşgeldiniz</h2>
+                                    <p class="text-muted">Devam etmek için lütfen giriş yapın.</p>
+                                </div>
+
+                                <div id="alertMessage" class="alert alert-danger d-none align-items-center" role="alert">
+                                    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                                    <span id="alertText">Hata mesajı burada görünecek.</span>
+                                </div>
+
+                                <form id="loginForm">
+                                    <div class="mb-4">
+                                        <label class="form-label text-muted small fw-bold">E-POSTA ADRESİ</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-end-0"><i class="fa-regular fa-envelope text-muted"></i></span>
+                                            <input type="email" id="emailInput" class="form-control bg-light border-start-0" placeholder="admin@harpia.com">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label text-muted small fw-bold">ŞİFRE</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-lock text-muted"></i></span>
+                                            <input type="password" id="passwordInput" class="form-control bg-light border-start-0" placeholder="••••••••">
+                                            <button class="btn btn-light border border-start-0" type="button" id="togglePassword">
+                                                <i class="fa-regular fa-eye text-muted"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                                            <label class="form-check-label small text-muted" for="rememberMe">Beni Hatırla</label>
+                                        </div>
+                                        <a href="#" class="small text-decoration-none text-muted">Şifremi Unuttum?</a>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-dark w-100 mb-4 shadow">
+                                        <span id="btnText">GİRİŞ YAP</span>
+                                        <span id="btnLoader" class="spinner-border spinner-border-sm ms-2 d-none"></span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Elementleri Seçelim
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('emailInput');
+            const passwordInput = document.getElementById('passwordInput');
+            const alertBox = document.getElementById('alertMessage');
+            const alertText = document.getElementById('alertText');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const togglePassBtn = document.getElementById('togglePassword');
+
+            // Şifre Göster/Gizle Özelliği
+            togglePassBtn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+
+            // Form Gönderildiğinde Çalışacak Fonksiyon
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Sayfanın yenilenmesini engelle
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                // 1. Basit Doğrulamalar (Validation)
+                if (email === "" || password === "") {
+                    showError("Lütfen e-posta ve şifre alanlarını doldurunuz.");
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    showError("Lütfen geçerli bir e-posta adresi giriniz.");
+                    return;
+                }
+
+                if (password.length < 4) {
+                    showError("Şifre en az 4 karakter olmalıdır.");
+                    return;
+                }
+
+                // Hata yoksa yükleniyor animasyonunu başlat
+                hideError();
+                setLoading(true);
+
+                // 2. Simüle Edilmiş Backend Kontrolü (setTimeout ile bekletiyoruz)
+                setTimeout(function() {
+                    // Burada normalde sunucuya sorulur. Biz elle kontrol ediyoruz:
+                    // Doğru bilgiler: admin@harpia.com / 123456
+                    
+                    if (email === "admin@harpia.com" && password === "123456") {
+                        // Başarılı Giriş
+                        localStorage.setItem('isLoggedIn', 'true');
+                        window.location.href = "index.html"; 
+                    } else {
+                        // Hatalı Giriş
+                        showError("E-posta adresi veya şifre hatalı!");
+                        setLoading(false);
+                    }
+                }, 1500); // 1.5 saniye bekleme süresi (gerçekçilik için)
+            });
+
+            // Yardımcı Fonksiyon: Hata Göster
+            function showError(message) {
+                alertBox.style.display = "block";
+                alertText.innerText = message;
+                // Kutuyu salla (shake efekti - CSS ile yapılabilir ama basit tutuyoruz)
+            }
+
+            // Yardımcı Fonksiyon: Hatayı Gizle
+            function hideError() {
+                alertBox.style.display = "none";
+            }
+
+            // Yardımcı Fonksiyon: Email Regex Kontrolü
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            // Yardımcı Fonksiyon: Buton Loading Durumu
+            function setLoading(isLoading) {
+                const btn = document.querySelector('button[type="submit"]');
+                if (isLoading) {
+                    btn.disabled = true;
+                    btnText.innerText = "KONTROL EDİLİYOR...";
+                    btnLoader.classList.remove('d-none');
+                } else {
+                    btn.disabled = false;
+                    btnText.innerText = "GİRİŞ YAP";
+                    btnLoader.classList.add('d-none');
+                }
+            }
+        </script>
+    </body>
+    </html>

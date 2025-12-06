@@ -377,9 +377,16 @@ if (year) {
 }
 
 
- // Footer'ı yükle
-        fetch('https://127.0.0.1/harpia/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
+// Footer'ı yükle
+fetch('footer.html') // Eğer footer.html ile bu script aynı klasördeyse
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Footer yüklenemedi');
+        }
+        return response.text();
+    })
+    .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Hata:', error));
+

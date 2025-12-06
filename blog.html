@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="tr"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORA - Saat & Mücevher | Blog</title> 
+    <meta name="description" content="ORA - Saat & Mücevher Blog'dan en son haberleri, makaleleri ve güncellemeleri okuyun."> 
+    <meta name="author" content="Author Name">
+    <meta name="keywords" content="Kol Saati, Gözlük, Mücevher, Aksesuar, Outlet, Blog, Saat Blogu, Mücevher Haberleri" /> 
+    <link rel="icon" href="./assets/img/favicon.png" sizes="32x32" />
+    <link rel="icon" href="./assets/img/favicon.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <style>
+        .blog-post-card {
+            background-color: var(--body-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+        .blog-post-card:hover {
+             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+         body.dark .blog-post-card:hover {
+              box-shadow: 0 8px 16px rgba(255, 255, 255, 0.08);
+         }
+        .blog-post-card img {
+            max-height: 400px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .blog-post-card .card-body { padding: 25px; }
+        .blog-post-card .card-title { font-size: 1.5rem; margin-bottom: 10px; color: var(--title-color); }
+        .blog-post-card .card-text { color: var(--text-color); margin-bottom: 20px; }
+        .blog-post-card .post-meta { font-size: 0.85rem; color: var(--text-color-light); margin-bottom: 15px; }
+        .blog-post-card .post-meta span { margin-right: 15px; }
+        .blog-post-card .read-more-link { color: var(--first-color); text-decoration: none; font-weight: 600; }
+        .blog-post-card .read-more-link:hover { text-decoration: underline; }
+        .blog-sidebar .widget { background-color: var(--body-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .blog-sidebar .widget-title { font-size: 1.2rem; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; color: var(--title-color); }
+        .blog-sidebar ul { list-style: none; padding-left: 0; }
+        .blog-sidebar ul li a { color: var(--text-color); text-decoration: none; }
+        .blog-sidebar ul li a:hover { color: var(--first-color); }
+        .pagination .page-item .page-link { color: var(--first-color); background-color: var(--body-color); border-color: var(--border-color); }
+        .pagination .page-item.active .page-link { background-color: var(--first-color); border-color: var(--first-color); color: #090909; }
+        .pagination .page-item.disabled .page-link { color: var(--text-color-light); background-color: var(--container-color); border-color: var(--border-color); }
+        section.pagination { margin-top: 30px; margin-bottom: 30px; }
+        .pagination a { /* Mevcut stiliniz çakışabilir, gerekirse ayarlayın */ }
+        .pagination i { font-size: 1rem; }
+        .blog-post-card .card-img-top {
+            height: 250px;       /* Tüm resimler 250px yüksekliğinde olsun */
+            width: 100%;         /* Genişlik kartı doldursun */
+            object-fit: cover;   /* SİHİRLİ KOD: Resmi bozmadan, kutuya sığacak şekilde kırpar */
+        }
+
+        /* Köşelerin düzgün yuvarlanması için karta da bunu ekle */
+        .blog-post-card {
+            overflow: hidden;    /* Resim karttan taşarsa (köşelerden) gizle */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-loader loader">
+        <div class="cmps">
+            <span class="mt-4 mx-auto d-block text-center">
+                Yükleniyor<b></b><b></b><b></b>
+            </span>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <section class="header--main">
+                <div class="mobile-menu">
+                    <input id="menu__toggle" class="open-nav" type="checkbox" />
+                    <label class="menu__btn" for="menu__toggle">
+                        <span></span>
+                    </label>
+                </div>
+                <div class="header--logo">
+                    <a href="./">
+                        <img src="./assets/img/light-logo.png" class="nav-logo" alt="Ora Watches &amp; Jewelery | Logo">
+                    </a>
+                </div>
+                <nav class="menu js-menu">
+                    <ul class="ul-menu">
+                        <li class="menu-item">
+                            <a href="./">Home</a>
+                        </li>
+                        <li class="menu-item menu-item-child">
+                            <a href="#" class="js-sub_menu">Products <i class="uil uil-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-menu-item"><a href="./products/products.html">All Products</a></li>
+                                <li class="sub-menu-item"><a href="./products/single-products.html">Single Post</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-child">
+                            <a href="#" class="js-sub_menu active-n">Pages <i class="uil uil-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-menu-item"><a href="./log-in.html" class="active">Log In</a></li>
+                                <li class="sub-menu-item"><a href="./sign-up.html">Sign Up</a></li>
+                                <li class="sub-menu-item"><a href="./blog.html">Blog</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="./about.html">About</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="./contact.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="darkLight-searchBox">
+                    <div class="dark-light">
+                        <i class="uil uil-moon moon"></i>
+                        <i class="uil uil-sun sun"></i>
+                    </div>
+                    <div class="searchBox">
+                        <div class="searchToggle">
+                            <i class="uil uil-times cancel"></i>
+                            <i class="uil uil-search search"></i>
+                        </div>
+                        <div class="search-field">
+                            <input type="text" placeholder="Search..." />
+                            <i class="uil uil-search-alt"></i>
+                        </div>
+                    </div>
+                     <div class="cart-checkout">
+                         <a href="cart.html" style="position: relative; display: inline-block;">
+                             <i class="uil uil-shopping-bag shopping-cart"></i>
+                             <span id="cart-counter" style="position: absolute; top: -10px; right: -10px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 10px; font-weight: bold;">0</span>
+                         </a>
+                     </div>
+                </div>
+            </section>
+            <div class="progress"></div>
+        </div>
+    </header><main class="wrapper">
+        
+        <section class="hero blog-hero">
+            <div class="container-fluid">
+                <div class="row">
+                    <h2>Harpia blog</h2>
+                    <p>Ürünlerimiz hakkındaki tüm yazıları okuyun!</p> 
+                </div>
+            </div>
+        </section>
+        <section class="blog-listing py-5">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8">
+                <!-- Rolex start  ./ -->
+                <div class="blog-post-card card">
+                    <img src="https://swisswatches-magazine.com/uploads/2024/09/rolex-submariner-titlepicture.webp" class="card-img-top" alt="Rolex Submariner">
+                    <div class="card-body">
+                        <div class="post-meta text-muted mb-2">
+                            <span><i class="uil uil-calendar-alt"></i> 18 Eki, 2025</span>
+                            <span><i class="uil uil-folder"></i> Yatırım</span>
+                        </div>
+                        <h3 class="card-title">Rolex Submariner: Derinlerin Efsanesi</h3>
+                        <p class="card-text">
+                            Bir saatten fazlası; bir miras. Rolex Submariner, sadece dalgıç saati tasarımını belirlemekle kalmadı...
+                        </p>
+                        
+                        <a href="#" class="read-more-link btn btn-link px-0" style="color: black !important;" data-bs-toggle="modal" data-bs-target="#modalRolex">
+                            Devamını Oku <i class="uil uil-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalRolex" tabindex="-1" aria-labelledby="modalRolexLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content">
+                        
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalRolexLabel">Rolex Submariner İncelemesi</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <img src="https://swisswatches-magazine.com/uploads/2024/09/rolex-turn-o-graph-vintage-advertisement.webp" class="img-fluid rounded mb-3" alt="Rolex Detay">
+                            
+                            <p><strong>Bir Efsanenin Doğuşu</strong></p>
+                            <p>
+                                Rolex Submariner, 1953 yılında piyasaya sürüldüğünde, 100 metreye (330 fit) kadar su geçirmezlik garantisi veren ilk dalgıç saatiydi. Bugün ise bu sınır 300 metreye kadar çıktı. Ancak Submariner'ı özel kılan sadece teknik özellikleri değil, James Bond filmlerinden okyanus derinliklerine kadar uzanan kültürel mirasıdır.
+                            </p>
+                            
+                            <p><strong>Neden Yatırım Değeri Taşıyor?</strong></p>
+                            <p>
+                            Çelik modelleri (özellikle "Hulk" veya "Kermit" gibi varyasyonlar), liste fiyatının çok üzerinde el değiştirmektedir. Rolex'in kontrollü üretim politikası ve hiç eskimeyen tasarımı, bu saati bir zaman makinesinden çok bir yatırım aracına dönüştürmüştür.
+                            </p>
+                            
+                            <div class="alert alert-light border" role="alert">
+                                <i class="uil uil-info-circle"></i> <strong>Uzman Notu:</strong> İkinci el alırken mutlaka sertifika ve kutu içeriğinin tam olduğunu doğrulayın.
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-primary">Satın Alma Seçenekleri</button>
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Rolex end  ./ -->
+                <!-- Patek Start -->
+                <div class="blog-post-card card">
+                    <img src="https://swisswatches-magazine.com/uploads/2024/11/patek-philippe-cubitus-ref-5821-1a-001-nautilus-ref-5711-1a-014-in-comparison-frontal-3.webp" class="card-img-top" alt="Patek Philippe Nautilus">
+                    <div class="card-body">
+                        <div class="post-meta text-muted mb-2">
+                            <span><i class="uil uil-calendar-alt"></i> 15 Eki, 2025</span>
+                            <span class="mx-2">|</span>
+                            <span><i class="uil uil-user"></i> Koleksiyoner</span>
+                            <span class="mx-2">|</span>
+                            <span><i class="uil uil-folder"></i> Haute Horlogerie</span>
+                        </div>
+                        <h3 class="card-title">Patek Philippe Nautilus: Spor Şıklığın Zirvesi</h3>
+                        <p class="card-text">
+                            "Bir Patek Philippe'e asla tam olarak sahip olamazsınız, sadece bir sonraki nesil için ona bakıcılık yaparsınız." Gerald Genta'nın efsanevi tasarımı Nautilus, lombozdan ilham alan kasasıyla lüks spor saat kavramını yeniden tanımladı. Bekleme listelerinin yıllar sürdüğü bu başyapıtın detaylarına iniyoruz.
+                        </p>
+                        
+                        <a href="#" class="read-more-link btn btn-link px-0" style="color: black !important;" data-bs-toggle="modal" data-bs-target="#modalPatek">
+                            Devamını Oku <i class="uil uil-arrow-right text-dark"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalPatek" tabindex="-1" aria-labelledby="modalPatekLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalPatekLabel">Patek Philippe Nautilus Efsanesi</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="https://swisswatches-magazine.com/uploads/2023/11/patek-philippe-5261R-001-rosegold-titlepicture-new-2048x1365.jpg" class="img-fluid rounded mb-3" alt="Patek Philippe Detay">
+                                
+                                <p><strong>1976'dan Günümüze Bir İkon</strong></p>
+                                <p>
+                                    Nautilus, yuvarlatılmış sekizgen çerçevesi ve kasanın sol ve sağ tarafındaki "kulak" detaylarıyla tanınır. Gerald Genta'nın bir restoranda peçeteye 5 dakikada çizdiği bu tasarım, bugün dünyanın en zor bulunan saatlerinden biridir.
+                                </p>
+                                <p><strong>Mekanizma ve İşçilik</strong></p>
+                                <p>
+                                    İçerisindeki kalibre, Patek Philippe mührü (Patek Philippe Seal) taşır; bu da İsviçre saatçiliğindeki en yüksek kalite standartlarından bile daha katı kurallar anlamına gelir. Her bir parça elle cilalanır ve monte edilir.
+                                </p>
+                                <div class="alert alert-secondary" role="alert">
+                                    <i class="uil uil-history"></i> <strong>Bilgi:</strong> 5711 referans numaralı mavi kadranlı çelik model, üretimden kalktığı açıklandığında piyasa değeri bir gecede %50 artmıştır.
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" class="btn btn-primary">Koleksiyona Göz At</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patek end ./ -->
+                 <!-- AP Start -->
+                <div class="blog-post-card card">
+                    <img src="https://swisswatches-magazine.com/uploads/2025/02/audemars-piguet-royal-oak-perpetual-calendar-openworked-150th-anniversary.webp" class="card-img-top" alt="Audemars Piguet Royal Oak">
+                    <div class="card-body">
+                        <div class="post-meta text-muted mb-2">
+                            <span><i class="uil uil-calendar-alt"></i> 12 Eki, 2025</span>
+                            <span class="mx-2">|</span>
+                            <span><i class="uil uil-user"></i> Saat Uzmanı</span>
+                            <span class="mx-2">|</span>
+                            <span><i class="uil uil-folder"></i> İkonik Tasarım</span>
+                        </div>
+                        <h3 class="card-title">Audemars Piguet Royal Oak: Kuralları Yıkan Çelik</h3>
+                        <p class="card-text">
+                            1972'de piyasaya sürüldüğünde lüks saat dünyasını şok eden sekizgen çerçeve. Royal Oak, çeliği altına eşdeğer bir statüye yükseltti. Tapisserie kadran işçiliğinden, entegre bilezik yapısına kadar AP'nin bu modelini zamansız kılan mühendislik harikalarını keşfedin.
+                        </p>
+                        
+                        <a href="#" class="read-more-link btn btn-link px-0" style="color: black !important;" data-bs-toggle="modal" data-bs-target="#modalAP">
+                            Devamını Oku <i class="uil uil-arrow-right text-dark"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modalAP" tabindex="-1" aria-labelledby="modalAPLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalAPLabel">Audemars Piguet Royal Oak: Devrimci Tasarım</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="https://swisswatches-magazine.com/uploads/2025/09/audemars-piguet-royal-oak-selfwinding-ultra-thin-perpetual-calendar-26586pt-oo-1240pt-01-dial-3.webp" class="img-fluid rounded mb-3" alt="AP Royal Oak Detay">
+                                    
+                                    <p><strong>Sekizgen Vidaların Sırrı</strong></p>
+                                    <p>
+                                        Royal Oak'ın en belirgin özelliği, sekizgen çerçevesi ve üzerindeki 8 adet altıgen vidadır. Dikkatli bakarsanız, vidaların yuvaları da altıgendir; bu da vidaların arkadan sıkıştırıldığı anlamına gelir. Bu tasarım detayı, kasanın mükemmel hizalanmasını sağlar.
+                                    </p>
+                                    <p><strong>Tapisserie Kadran</strong></p>
+                                    <p>
+                                        AP'nin imzası niteliğindeki kareli kadran deseni ("Grande Tapisserie"), eski usul torna makineleriyle saatler süren bir işlemle üretilir. Işığı yansıtma biçimi, bu saati diğerlerinden ayıran en önemli özelliktir.
+                                    </p>
+                                    <div class="alert alert-dark" role="alert">
+                                        <i class="uil uil-star"></i> <strong>Jumbo:</strong> "Jumbo" lakaplı ultra ince model, 39mm çapına rağmen entegre bileziği sayesinde bilekte daha heybetli durur.
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" class="btn btn-primary">Butik Randevusu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AP end ./ -->
+
+
+                <nav aria-label="Blog sayfalama" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled"><a class="page-link" href="#"><i class="uil uil-arrow-left text-dark"></i></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="uil uil-arrow-right text-dark"></i></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="col-lg-4 blog-sidebar">
+
+                <div class="widget search-widget mb-4">
+                    <h4 class="widget-title mb-3">Lüks Arama</h4>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Model veya Marka ara..." aria-label="Arama">
+                        <button class="btn btn-dark" type="submit"><i class="uil uil-search"></i></button>
+                    </form>
+                </div>
+
+                <div class="widget categories-widget mb-4">
+                    <h4 class="widget-title mb-3">Kategoriler</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">İsviçre Saatleri (15)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Yatırım Tavsiyeleri (8)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Sınırlı Üretim (5)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Müzayede Haberleri (3)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Haute Horlogerie (10)</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget recent-posts-widget">
+                    <h4 class="widget-title mb-3">Son Yazılar</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-dark">Rolex Submariner İncelemesi</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-dark">Patek Philippe Nautilus Tarihi</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-dark">AP Royal Oak ve Çeliğin Yükselişi</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-dark">Lüks Saatte Orijinallik Kontrolü</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
+
+
+        <section class="newsletter">
+             <div class="container">
+                 <div class="row align-items-center">
+                     <div class="col-md-6 col-lg-8">
+                         <div class="newstext">
+                             <h4>Bültenimize Kaydolun!</h4>
+                             <p>En Son Ürünlerimiz ve <span>özel tekliflerimiz</span> hakkında E-posta güncellemeleri alın.</p>
+                         </div>
+                     </div>
+                     <div class="col-md-6 col-lg-4">
+                         <div class="n-form">
+                             <input type="text" placeholder="E-posta Adresiniz...">
+                             <button class="btn-normal">Kaydol</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+    </main>
+    <div id="footer-placeholder"></div>
+
+   <div class="cookie">
+        <div>
+            <img src="assets/img/other/cookie.png" alt="Cookie Png" />
+        </div>
+        <div class="content">
+            <h1>Çerez Bilgilendirmesi</h1>
+            <p>Alışveriş deneyiminizi iyileştirmek için çerezleri kullanıyoruz!</p>
+            <a href="#" class="item">Daha fazla bilgi</a>
+        </div>
+        <div class="btn-actions">
+            <button class="item" onclick="acceptCookies()">Anladım</button>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

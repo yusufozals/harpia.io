@@ -54,3 +54,40 @@ harpia.io/
 ├── cart.html               # Sepet sayfası
 ├── contact.html            # İletişim
 └── ...
+```
+## ⚙️ Kurulum ve Kullanım
+Bu proje statik web teknolojileri (HTML/CSS/JS) ile geliştirildiği için herhangi bir sunucu kurulumu gerektirmez.
+
+Projeyi bilgisayarınıza indirin veya klonlayın.
+
+Ana dizindeki index.html dosyasına çift tıklayarak tarayıcınızda açın.
+
+Admin Paneli İçin: Tarayıcıda admin/index.html veya admin/login.html dosyasını açın.
+
+Not: Admin giriş simülasyonu için e-posta: admin@harpia.com, şifre: 123456 olarak ayarlanmıştır (JavaScript tarafında).
+
+
+##  📷 Ekran Görüntüleri
+<img width="1901" height="983" alt="Ekran görüntüsü 2025-12-07 143639" src="https://github.com/user-attachments/assets/ebd0464e-5b78-42df-bfdc-10dfd2c174cf" />
+<img width="1900" height="1032" alt="Ekran görüntüsü 2025-12-07 143709" src="https://github.com/user-attachments/assets/d916b726-a975-405c-834d-043c075242e9" />
+<img width="1900" height="1029" alt="Ekran görüntüsü 2025-12-07 143739" src="https://github.com/user-attachments/assets/2d12c6d3-a165-426b-aaf1-9fe12472d6e4" />
+<img width="1918" height="1029" alt="Ekran görüntüsü 2025-12-07 143813" src="https://github.com/user-attachments/assets/d4f31107-ddaa-467e-8d6a-5345c60fc263" />
+<img width="1915" height="1026" alt="Ekran görüntüsü 2025-12-07 143842" src="https://github.com/user-attachments/assets/c165bc0c-1292-4365-a6d9-7b96f68ac444" />
+<img width="1916" height="1030" alt="Ekran görüntüsü 2025-12-07 143856" src="https://github.com/user-attachments/assets/98a1b13f-341e-42ee-a611-00278b97d3fc" />
+<img width="1919" height="1030" alt="Ekran görüntüsü 2025-12-07 143909" src="https://github.com/user-attachments/assets/6fcc80fb-e06b-4adc-8636-506ab4521d13" />
+<img width="1919" height="1009" alt="image" src="https://github.com/user-attachments/assets/49fd0f18-2528-4e0a-8ae4-e9d18cd8dbe5"/>
+
+
+## 🤝 Katkıda Bulunma
+Bu projeyi forklayın.
+
+Yeni bir özellik dalı oluşturun (git checkout -b feature/YeniOzellik).
+
+Değişikliklerinizi commit edin (git commit -m 'Yeni özellik eklendi').
+
+Dalınızı push edin (git push origin feature/YeniOzellik).
+
+Bir Pull Request oluşturun.
+
+## 📄 Lisans
+Bu proje MIT Lisansı ile lisanslanmıştır.
